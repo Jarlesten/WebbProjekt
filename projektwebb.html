@@ -17,9 +17,6 @@
 </head>
 <body>
 
-
-    <p> HEJ HEJ HEJ HEJ HEJ HEJ HEJ</p>
-
     <header>
         <div class="nav-image">
 
@@ -163,32 +160,36 @@
 
 <!--REACT SCROLL/UP DOWN-->
 
-<script type="text/babel">
-  const { useState, useEffect } = React; // IMPORTERAR REACT
+<script type="text/babel"> // IMPORTERAR REACT
+  const { useState } = React; 
 
-  
-  //sparar data som 'isdown'-variabel som sedan nedan sätts till true = scrolla NED
-  //setIsDown = en annan funk för att ÄNDRA VÄRDET OM FALSE
-  // SÅ ISDOWN-VARIABELN ÄR USESTATE(TRUE)(DÄR TRUE ÄR START VÄRDET)
+  // SÅ ISDOWN-VARIABELN ÄR USESTATE(TRUE)(DÄR TRUE ÄR START VÄRDET=Scrolla ned)
+  //useState(true) skapar en state-variabel som heter isDown
+   //setIsDown = en annan funk för att ÄNDRA VÄRDET OM isDown är FALSE
   function ScrollButton() {
     const [isDown, setIsDown] = useState(true);
     
     const handleClick = () => {
-      if (isDown) {
-        // Scroll NER (nästa sektion)
+      if (isDown) { // IF  isDown(true)=Scrolla NER (vilket den är här)
         window.scrollTo({
           top: window.innerHeight * 4.5, // Lite längre viewport. så den kommer till botten av hemsidans höjd
           behavior: 'smooth'
         });
       } else {
-        // Scroll UPP (till toppen)
+        // IF isDown(false)=Scrolla UPP 
         window.scrollTo({
           top: 0,
           behavior: 'smooth'
         });
       }
-      setIsDown(!isDown);  // Växla riktning
-    };
+      setIsDown(!isDown);  //Här sparas nya värdet i setIsDown för isDown har nu blivit False och setIsDown True=scrolla upp
+    }; //DEN INVENTERAR VÄRDET
+    // !!!!!!!!!!!!!!!!!! TA BORT NEDAN SEN     !!!!!!!!!!!
+    //1. if (isDown) → true ✓ → Kör "Scroll NER" (window.innerHeight * 4.5)
+    //2. Sidan scrollar ner...
+    //3. setIsDown(!isDown) → !true = false
+    //4. isDown blir NU: false
+    //5. React ritar om → Knappen visar "↑ UPP"
     
     return React.createElement('button', {
       onClick: handleClick,
