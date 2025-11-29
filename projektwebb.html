@@ -33,13 +33,6 @@
             
         </div>
 
-
-
-        <!--SÖKBAREN##########################################-->
-    <input type="text" id="searchInput" placeholder="Search...">
-    <button id="searchButton">Search</button>
-    <div id="searchResult"></div>
-
     </header>
 <br><br>
 
@@ -160,35 +153,39 @@
 
 <!--REACT SCROLL/UP DOWN-->
 
-<script type="text/babel">
-  const { useState, useEffect } = React; // IMPORTERAR REACT
+<script type="text/babel"> // IMPORTERAR REACT
+  const { useState } = React; 
 
-  
-  //sparar data som 'isdown'-variabel som sedan nedan sätts till true = scrolla NED
-  //setIsDown = en annan funk för att ÄNDRA VÄRDET OM FALSE
-  // SÅ ISDOWN-VARIABELN ÄR USESTATE(TRUE)(DÄR TRUE ÄR START VÄRDET)
+  // SÅ ISDOWN-VARIABELN ÄR USESTATE(TRUE)(DÄR TRUE ÄR START VÄRDET=Scrolla ned)
+  //useState(true) skapar en state-variabel som heter isDown
+   //setIsDown = en annan funk för att ÄNDRA VÄRDET OM isDown är FALSE
   function ScrollButton() {
-    const [isDown, setIsDown] = useState(true);
+    const [isDown, setIsDown] = useState(true); //isDown=minne, setIsDown=funktion
     
     const handleClick = () => {
-      if (isDown) {
-        // Scroll NER (nästa sektion)
+      if (isDown) { // IF  isDown(true)=Scrolla NER (vilket den är här)
         window.scrollTo({
           top: window.innerHeight * 4.5, // Lite längre viewport. så den kommer till botten av hemsidans höjd
           behavior: 'smooth'
         });
       } else {
-        // Scroll UPP (till toppen)
+        // IF isDown(false)=Scrolla UPP 
         window.scrollTo({
           top: 0,
           behavior: 'smooth'
         });
       }
-      setIsDown(!isDown);  // Växla riktning
-    };
+      setIsDown(!isDown);  //Här sparas nya värdet i setIsDown för isDown har nu blivit False och setIsDown True=scrolla upp
+    }; 
+    // !!!!!!!!!!!!!!!!!! TA BORT NEDAN SEN     !!!!!!!!!!!
+    //1. if (isDown) → true ✓ → Kör "Scrolla NER" (window.innerHeight * 4.5)
+    //2. Sidan scrollas ner...
+    //3. setIsDown(!isDown) → !true = false
+    //4. isDown blir NU: false
+    //5. React ritar om → Knappen visar "↑ UPP"
     
-    return React.createElement('button', {
-      onClick: handleClick,
+    return React.createElement('button', { //REACT SKAPAR KNAPPEN MED NEDAN EGENSKAPER
+      onClick: handleClick, //När knappen klickas så startar handleclick-funk som vi skapade ovan
       style: {
 
         //KNAPPEN KOMMER ALLTID ÖVER ANDRA ELEMENT EXCEPT MOBILE MENY SOM HAR POS:ABSOLUTE
@@ -196,86 +193,55 @@
         bottom: '25px',
         right: '25px',
         padding: '15px 25px',
-        background: isDown ? 'black' : 'white',  // IS DOWN? =  VILLKOR-SATS
-        color: isDown ? 'white': 'black', //OM INTE = FALSE(VIT), OM SANT = TRUE(SVART)
+        background: isDown ? 'black' : 'white',  //OM TRUE=BG SVART; OM FALSE=BG VIT
+        color: isDown ? 'white': 'black', //OM TRUE =VIT, OM FALSE = SVART
         border: 'none',
         borderRadius: '10px',
         fontSize: '18px',
         fontWeight: 'bold', 
         cursor: 'pointer',
-        boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
         transition: 'background 0.5s' // HUR SNABBT SCROLLEN SCROLLAS
       }
-    }, isDown ? '↓ TAKE ME DOWN' : '↑ TAKE ME UP'); // VILLKOR SATS. OM NED ÄR SANT=BYTER TILL UPP
+    }, isDown ? '↓ TAKE ME DOWN' : '↑ TAKE ME UP'); // VILLKOR SATS. OM isDown(FALSE)=BYTER TEXT
   }
   
-  // Rendera direkt (inga timing-problem)
+  // HÄR SÅ PLACERAS REACT-KNAPPEN DÄR JAG HAR SKAPAT DIV-ELEMENTET MED ID:ET 'SCROLL-BUTTON'
   const root = ReactDOM.createRoot(document.getElementById('scroll-button'));
-  root.render(React.createElement(ScrollButton));
+  root.render(React.createElement(ScrollButton)); // HÄR RENDERAR REACT KNAPPEN
 </script>
    
-
-<!--BEHÖVER NEDAN LÄNK OM VI SKA HA JQUERY-->
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js">
-
-
-            $(document).ready(function()  {
-            var keyWords = [
-                "contact",
-                "gallery",
-                "about",
-                "game",
-                "home",
-                "who am I",
-                "JJ/Studio"
-            ];
-            
-            $('#searchButton').click(function() {
-                var input = $('#searchInput').val().toLowerCase();
-                var results = keyWords.filter(function(word) {
-                    return word.toLowerCase().includes(input);
-                });
-                $('#searchResult').empty();
-                if (results.length > 0) {
-                    results.forEach(function(result) {
-                        $('#searchResult').append('<p>' + result + '</p>');
-                    });
-                } else {
-                    $('#searchResult').append('<p>No results found</p>');
-                }
-            });
-        });
-
-
-</script> 
-
-
 
   <script type="text/javascript">
     window.onload = function() {
 
      // HAMBURGAR-MENY
     const menuToggle = document.getElementById('menuToggle'); //const=värdet kan ej ändras
-    const navContainer = document.querySelector('.nav-container');//Kolla upp queryselector
+    const navContainer = document.querySelector('.nav-container');//sökmetod som letar efter första element. Detta fall .nav-container.
+    //När den hittas så sparas den i variabel
 
-        menuToggle.addEventListener('click', () => { //Kolla upp addeventlistener
-        navContainer.classList.toggle('visible'); // kolla upp classlist
+        menuToggle.addEventListener('click', () => { //funktion som lyssnar på 'click', och låter ngt hända när man klickar.
+        navContainer.classList.toggle('visible'); 
+        //classlist=lista med css-klasser. efter klickat toogle=syns menyn.
+        // !!!!!!!!!!!!!! TA BORT NEDAN INNAN INSKICK !!!!!!!!!!!!
+        //1. Användare klickar ☰
+        //2. addEventListener "hör" → kör () => { ... }
+        //3. toggle('visible') växlar klass → CSS visar/gömmer menyn
+        //4. Klicka igen → toggle vänder tillbaka
   }
 );
 
 // SCROLLTO()
- const anchorLinks = document.querySelectorAll('a[href^="#"]');
-  anchorLinks.forEach(link => {  // DUBBELKOLLA DETTA SÅ VI VET VAD ALLT BETYDER
-    link.addEventListener('click', function (e) {
-      const targetId = this.getAttribute('href');  
-      const targetElement = document.querySelector(targetId); //Kolla upp queryselector
+ const anchorLinks = document.querySelectorAll('a[href^="#"]');//Letar upp alla <a>-taggar med href som börjar med #. (nodelist, typ som array)
+  anchorLinks.forEach(link => {  //FOREACH-LOOP, För varje länk med a href #, läggs funktionen till som lyssnar efter klick
+    link.addEventListener('click', function (e) { //addEventListener=väck denna länk, 'click'=väck spec vid klick, function(e) när ngn klickar=kör koden
+      const targetId = this.getAttribute('href'); //This=klickad länk, getAttribute får värdet av href (tex contact-us) 
+      const targetElement = document.querySelector(targetId); //här letar den efter tex id contact-us i dokumentet
 
       if (targetElement) {
-        e.preventDefault(); // kolla upp preventdefault
-        targetElement.scrollIntoView({
+        e.preventDefault(); //Stoppar länkens normala beteende (hårt hopp till #contact-us). Förhindrar standard-action.
+        targetElement.scrollIntoView({ //Istället gör den detta
           behavior: 'smooth',
-          block: 'start' // kolla upp block:'start'
+          block: 'start' //scrollas till toppen av elementet.
         });
       }
     });

@@ -2,8 +2,8 @@ body {
     background-color: black;
 }
 
-.menu-toggle { /*LÄMNA KOMMENTAR*/
-    display: none;
+.menu-toggle { 
+    display: none; /*DENNA SKALL GÖMMAS; MEN VISAS I MQ*/
     background: none;
     border: none;
     font-size: 50px;
@@ -11,7 +11,7 @@ body {
     position: absolute;
     top: 15px;
     left: 30px;
-    z-index: 1100;
+    z-index: 9999; /*Ska ligga över alla andra element*/
     color: white;
 }
 
@@ -96,7 +96,7 @@ h1 {
   
 
 }
-
+/*Gallery*/
 .gallerycontainer{
     width:auto;
     
@@ -146,7 +146,7 @@ h1 {
   filter:blur(0) grayscale(0) saturate(1); /*Make it colorful and not blurry*/
 }
 
-/* CONTAINER TILL DOTSEN */
+/* Dot container */
 .dotcontainer{position:relative;
   margin-top:12px;
   display:flex;
@@ -154,7 +154,7 @@ h1 {
   justify-content:center
 }
 
-.dot { /*DOT KNAPPARNA */
+.dot { /* Dot buttons */
   width:12px;
   height:12px;
   border-radius:999px;
