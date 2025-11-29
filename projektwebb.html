@@ -33,13 +33,6 @@
             
         </div>
 
-
-
-        <!--SÖKBAREN##########################################-->
-    <input type="text" id="searchInput" placeholder="Search...">
-    <button id="searchButton">Search</button>
-    <div id="searchResult"></div>
-
     </header>
 <br><br>
 
@@ -217,43 +210,6 @@
   root.render(React.createElement(ScrollButton)); // HÄR RENDERAR REACT KNAPPEN
 </script>
    
-
-<!--BEHÖVER NEDAN LÄNK OM VI SKA HA JQUERY-->
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js">
-
-
-            $(document).ready(function()  {
-            var keyWords = [
-                "contact",
-                "gallery",
-                "about",
-                "game",
-                "home",
-                "who am I",
-                "JJ/Studio"
-            ];
-            
-            $('#searchButton').click(function() {
-                var input = $('#searchInput').val().toLowerCase();
-                var results = keyWords.filter(function(word) {
-                    return word.toLowerCase().includes(input);
-                });
-                $('#searchResult').empty();
-                if (results.length > 0) {
-                    results.forEach(function(result) {
-                        $('#searchResult').append('<p>' + result + '</p>');
-                    });
-                } else {
-                    $('#searchResult').append('<p>No results found</p>');
-                }
-            });
-        });
-
-
-</script> 
-
-
 
   <script type="text/javascript">
     window.onload = function() {
