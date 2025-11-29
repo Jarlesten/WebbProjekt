@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Basics - Learn from Scratch</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+        
+        h2 {
+            color: #667eea;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .lesson {
+            background: #f8f9fa;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .output {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .interactive-section {
+            background: #fff3e0;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border: 2px solid #ff9800;
+        }
+        
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #764ba2;
+        }
+        
+        input {
+            padding: 8px 12px;
+            border: 2px solid #667eea;
+            border-radius: 5px;
+            font-size: 14px;
+            margin: 5px;
+        }
+        
+        .console-output {
+            background: #1e1e1e;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            min-height: 50px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .keyword {
+            color: #e91e63;
+            font-weight: bold;
+        }
+        
+        .string {
+            color: #4caf50;
+        }
+        
+        .number {
+            color: #2196f3;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"> 
+        <h1>🚀 JavaScript Basics - Learn from Scratch</h1>
+        
+        <!-- Lesson 1: What is JavaScript? -->
+        <h2>Lesson 1: What is JavaScript?</h2>
+        <div class="lesson">
+            <p>JavaScript is a programming language that makes websites interactive. It runs in your web browser and can:</p>
+            <ul>
+                <li>Respond to user actions (clicks, typing, etc.)</li>
+                <li>Change what you see on the page</li>
+                <li>Store and manipulate data</li>
+                <li>Communicate with servers</li>
+            </ul>
+        </div>
+        
+        <!-- Lesson 2: Variables -->
+        <h2>Lesson 2: Variables (Storing Data)</h2>
+        <div class="lesson">
+            <p>Variables are like boxes that store data. You can create them with <span class="keyword">let</span>, <span class="keyword">const</span>, or <span class="keyword">var</span>.</p>
+            
+            <p><strong>Best Practice:</strong> Use <span class="keyword">const</span> by default, <span class="keyword">let</span> when you need to change values.</p>
+            
+            <div class="code-block">
+// Creating variables
+const name = "Alice";           // Text (String)
+let age = 25;                   // Number
+let isStudent = true;           // Boolean (true/false)
+let hobbies = ["reading", "coding", "gaming"]; // Array (list)
+
+console.log(name);              // Output: Alice
+console.log(age);               // Output: 25
+            </div>
+        </div>
+        
+        <!-- Interactive Exercise 1 -->
+        <div class="interactive-section">
+            <h3>Try It: Variables</h3>
+            <input type="text" id="userName" placeholder="Enter your name">
+            <input type="number" id="userAge" placeholder="Enter your age">
+            <button onclick="lesson2Exercise()">Show My Info</button>
+            <div id="lesson2Output" class="console-output"></div>
+        </div>
+        
+        <!-- Lesson 3: Data Types -->
+        <h2>Lesson 3: Data Types</h2>
+        <div class="lesson">
+            <p>JavaScript has different types of data:</p>
+            
+            <div class="code-block">
+// String - text
+const message = "Hello, World!";
+
+// Number - integers and decimals
+const count = 42;
+const price = 19.99;
+
+// Boolean - true or false
+const isComplete = true;
+
+// Array - list of items
+const colors = ["red", "green", "blue"];
+console.log(colors[0]); // Output: red
+
+// Object - collection of properties
+const person = {
+    name: "Bob",
+    age: 30,
+    city: "New York"
+};
+console.log(person.name); // Output: Bob
+            </div>
+        </div>
+        
+        <!-- Lesson 4: Math and Operators -->
+        <h2>Lesson 4: Math and Operators</h2>
+        <div class="lesson">
+            <p>You can perform calculations and comparisons:</p>
+            
+            <div class="code-block">
+// Arithmetic
+const x = 10;
+const y = 3;
+
+console.log(x + y);  // Addition: 13
+console.log(x - y);  // Subtraction: 7
+console.log(x * y);  // Multiplication: 30
+console.log(x / y);  // Division: 3.33...
+console.log(x % y);  // Remainder: 1
+
+// Comparison
+console.log(5 > 3);      // true
+console.log(5 === 5);    // true (equal value AND type)
+console.log(5 !== "5");  // true (not equal)
+console.log(10 >= 10);   // true
+            </div>
+        </div>
+        
+        <!-- Interactive Exercise 2 -->
+        <div class="interactive-section">
+            <h3>Try It: Calculator</h3>
+            <input type="number" id="num1" placeholder="First number" value="10">
+            <input type="number" id="num2" placeholder="Second number" value="5">
+            <button onclick="calculate('+')">Add</button>
+            <button onclick="calculate('-')">Subtract</button>
+            <button onclick="calculate('*')">Multiply</button>
+            <button onclick="calculate('/')">Divide</button>
+            <div id="calcOutput" class="console-output"></div>
+        </div>
+        
+        <!-- Lesson 5: Conditionals -->
+        <h2>Lesson 5: Conditionals (Making Decisions)</h2>
+        <div class="lesson">
+            <p>Conditionals let your code make decisions using <span class="keyword">if</span>, <span class="keyword">else if</span>, and <span class="keyword">else</span>:</p>
+            
+            <div class="code-block">
+const age = 20;
+
+if (age >= 18) {
+    console.log("You are an adult");
+} else if (age >= 13) {
+    console.log("You are a teenager");
+} else {
+    console.log("You are a child");
+}
+// Output: You are an adult
+
+// Combining conditions
+const score = 85;
+const attendance = 95;
+
+if (score >= 80 && attendance >= 90) {
+    console.log("Great job! A+ for you!");
+} else if (score >= 70 || attendance >= 80) {
+    console.log("Good work!");
+} else {
+    console.log("Keep trying!");
+}
+            </div>
+        </div>
+        
+        <!-- Interactive Exercise 3 -->
+        <div class="interactive-section">
+            <h3>Try It: Grade Calculator</h3>
+            <input type="number" id="scoreInput" placeholder="Enter your score (0-100)" value="85">
+            <button onclick="gradeCalculator()">Calculate Grade</button>
+            <div id="gradeOutput" class="console-output"></div>
+        </div>
+        
+        <!-- Lesson 6: Loops -->
+        <h2>Lesson 6: Loops (Repeating Code)</h2>
+        <div class="lesson">
+            <p>Loops repeat code multiple times. Common loops are <span class="keyword">for</span> and <span class="keyword">while</span>:</p>
+            
+            <div class="code-block">
+// For loop - repeat a fixed number of times
+for (let i = 1; i <= 5; i++) {
+    console.log("Count: " + i);
+}
+// Output: Count: 1, Count: 2, ..., Count: 5
+
+// Loop through an array
+const fruits = ["apple", "banana", "orange"];
+for (let i = 0; i < fruits.length; i++) {
+    console.log(fruits[i]);
+}
+
+// For...of loop (cleaner way)
+for (const fruit of fruits) {
+    console.log(fruit);
+}
+
+// While loop - repeat while condition is true
+let x = 0;
+while (x < 3) {
+    console.log("x is " + x);
+    x++;
+}
+            </div>
+        </div>
+        
+        <!-- Interactive Exercise 4 -->
+        <div class="interactive-section">
+            <h3>Try It: Times Table</h3>
+            <input type="number" id="tableNumber" placeholder="Enter a number" value="5">
+            <button onclick="timesTable()">Show Times Table</button>
+            <div id="tableOutput" class="console-output"></div>
+        </div>
+        
+        <!-- Lesson 7: Functions -->
+        <h2>Lesson 7: Functions (Reusable Code)</h2>
+        <div class="lesson">
+            <p>Functions let you package code to reuse later:</p>
+            
+            <div class="code-block">
+// Simple function
+function greet(name) {
+    return "Hello, " + name + "!";
+}
+
+console.log(greet("Alice")); // Output: Hello, Alice!
+
+// Function with multiple parameters
+function add(a, b) {
+    return a + b;
+}
+
+console.log(add(5, 3)); // Output: 8
+
+// Arrow function (modern syntax)
+const multiply = (x, y) => x * y;
+console.log(multiply(4, 5)); // Output: 20
+
+// Function without return
+function celebrate() {
+    console.log("🎉 Congratulations! 🎉");
+}
+celebrate();
+            </div>
+        </div>
+        
+        <!-- Interactive Exercise 5 -->
+        <div class="interactive-section">
+            <h3>Try It: Custom Function</h3>
+            <input type="number" id="funcNum1" placeholder="First number" value="10">
+            <input type="number" id="funcNum2" placeholder="Second number" value="4">
+            <button onclick="squareNumbers()">Square Both Numbers</button>
+            <button onclick="compareNumbers()">Compare Numbers</button>
+            <div id="funcOutput" class="console-output"></div>
+        </div>
+        
+        <!-- Lesson 8: Manipulating the DOM -->
+        <h2>Lesson 8: Interacting with Web Pages (DOM)</h2>
+        <div class="lesson">
+            <p>JavaScript can change what appears on the page using the DOM (Document Object Model):</p>
+            
+            <div class="code-block">
+// Get an element by ID
+const heading = document.getElementById("myHeading");
+
+// Change text
+heading.textContent = "New Title";
+
+// Change style
+heading.style.color = "blue";
+heading.style.fontSize = "24px";
+
+// Add/Remove classes
+heading.classList.add("highlight");
+
+// Create and add new elements
+const newButton = document.createElement("button");
+newButton.textContent = "Click Me";
+document.body.appendChild(newButton);
+
+// Listen for clicks
+newButton.addEventListener("click", function() {
+    console.log("Button clicked!");
+});
+            </div>
+        </div>
+        
+        <!-- Interactive Exercise 6 -->
+        <div class="interactive-section">
+            <h3>Try It: Change the Page</h3>
+            <div id="demoBox" style="background: #e0e0e0; padding: 20px; border-radius: 5px; margin: 10px 0;">
+                <p id="demoText">This text will change!</p>
+            </div>
+            <button onclick="changeText()">Change Text</button>
+            <button onclick="changeColor()">Change Color</button>
+            <button onclick="resetDemo()">Reset</button>
+        </div>
+        
+        <!-- Final Project -->
+        <h2>🎯 Final Project: Interactive Todo List</h2>
+        <div class="lesson">
+            <p>Let's build a simple todo list to practice everything we've learned!</p>
+            
+            <div class="interactive-section">
+                <input type="text" id="todoInput" placeholder="Enter a task...">
+                <button onclick="addTodo()">Add Task</button>
+                <ul id="todoList" style="margin-top: 15px; list-style: none;"></ul>
+                <div style="margin-top: 15px;">
+                    <button onclick="clearCompleted()" style="background: #ff6b6b;">Clear Completed</button>
+                    <button onclick="clearAll()" style="background: #666;">Clear All</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick Reference -->
+        <h2>📚 Quick Reference</h2>
+        <div class="lesson">
+            <h3>Common Methods:</h3>
+            <ul>
+                <li><code>console.log()</code> - Print to console</li>
+                <li><code>document.getElementById()</code> - Find HTML element by ID</li>
+                <li><code>document.querySelector()</code> - Find element by selector</li>
+                <li><code>element.textContent</code> - Change text</li>
+                <li><code>element.innerHTML</code> - Change HTML content</li>
+                <li><code>array.push()</code> - Add to array</li>
+                <li><code>array.pop()</code> - Remove from array</li>
+                <li><code>string.length</code> - Get string length</li>
+                <li><code>Math.random()</code> - Random number 0-1</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // Lesson 2: Variables Exercise
+        function lesson2Exercise() {
+            const name = document.getElementById('userName').value || 'Anonymous';
+            const age = document.getElementById('userAge').value || 'unknown';
+            const output = document.getElementById('lesson2Output');
+            output.textContent = `Name: ${name}\nAge: ${age}\nYou've completed variables!`;
+        }
+        
+        // Lesson 4: Calculator Exercise
+        function calculate(operation) {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            let result;
+            
+            if (operation === '+') result = num1 + num2;
+            else if (operation === '-') result = num1 - num2;
+            else if (operation === '*') result = num1 * num2;
+            else if (operation === '/') result = num2 !== 0 ? num1 / num2 : 'Cannot divide by zero';
+            
+            document.getElementById('calcOutput').textContent = `${num1} ${operation} ${num2} = ${result}`;
+        }
+        
+        // Lesson 5: Grade Calculator
+        function gradeCalculator() {
+            const score = parseFloat(document.getElementById('scoreInput').value);
+            let grade;
+            
+            if (score >= 90) grade = 'A';
+            else if (score >= 80) grade = 'B';
+            else if (score >= 70) grade = 'C';
+            else if (score >= 60) grade = 'D';
+            else grade = 'F';
+            
+            const output = document.getElementById('gradeOutput');
+            output.textContent = `Score: ${score}\nGrade: ${grade}`;
+        }
+        
+        // Lesson 6: Times Table
+        function timesTable() {
+            const num = parseInt(document.getElementById('tableNumber').value);
+            let result = '';
+            
+            for (let i = 1; i <= 10; i++) {
+                result += `${num} × ${i} = ${num * i}\n`;
+            }
+            
+            document.getElementById('tableOutput').textContent = result;
+        }
+        
+        // Lesson 7: Functions Exercises
+        function squareNumbers() {
+            const num1 = parseFloat(document.getElementById('funcNum1').value);
+            const num2 = parseFloat(document.getElementById('funcNum2').value);
+            
+            const square = (n) => n * n;
+            
+            const output = document.getElementById('funcOutput');
+            output.textContent = `${num1}² = ${square(num1)}\n${num2}² = ${square(num2)}`;
+        }
+        
+        function compareNumbers() {
+            const num1 = parseFloat(document.getElementById('funcNum1').value);
+            const num2 = parseFloat(document.getElementById('funcNum2').value);
+            
+            const compare = (a, b) => {
+                if (a > b) return `${a} is larger`;
+                if (b > a) return `${b} is larger`;
+                return 'Numbers are equal';
+            };
+            
+            document.getElementById('funcOutput').textContent = compare(num1, num2);
+        }
+        
+        // Lesson 8: DOM Manipulation
+        function changeText() {
+            document.getElementById('demoText').textContent = 'The text has been changed! 🎉';
+        }
+        
+        function changeColor() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#6c5ce7'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.getElementById('demoBox').style.background = randomColor;
+        }
+        
+        function resetDemo() {
+            document.getElementById('demoText').textContent = 'This text will change!';
+            document.getElementById('demoBox').style.background = '#e0e0e0';
+        }
+        
+        // Todo List Project
+        let todos = [];
+        
+        function addTodo() {
+            const input = document.getElementById('todoInput');
+            const task = input.value.trim();
+            
+            if (task === '') {
+                alert('Please enter a task!');
+                return;
+            }
+            
+            const todo = {
+                id: Date.now(),
+                text: task,
+                completed: false
+            };
+            
+            todos.push(todo);
+            input.value = '';
+            renderTodos();
+        }
+        
+        function toggleTodo(id) {
+            todos = todos.map(todo =>
+                todo.id === id ? { ...todo, completed: !todo.completed } : todo
+            );
+            renderTodos();
+        }
+        
+        function deleteTodo(id) {
+            todos = todos.filter(todo => todo.id !== id);
+            renderTodos();
+        }
+        
+        function renderTodos() {
+            const list = document.getElementById('todoList');
+            list.innerHTML = '';
+            
+            todos.forEach(todo => {
+                const li = document.createElement('li');
+                li.style.padding = '10px';
+                li.style.margin = '5px 0';
+                li.style.background = todo.completed ? '#d4edda' : '#fff3cd';
+                li.style.borderRadius = '5px';
+                li.style.display = 'flex';
+                li.style.justifyContent = 'space-between';
+                li.style.alignItems = 'center';
+                
+                const text = document.createElement('span');
+                text.textContent = todo.text;
+                text.style.textDecoration = todo.completed ? 'line-through' : 'none';
+                text.style.cursor = 'pointer';
+                text.style.flex = '1';
+                text.onclick = () => toggleTodo(todo.id);
+                
+                const deleteBtn = document.createElement('button');
+                deleteBtn.textContent = '✕';
+                deleteBtn.style.background = '#dc3545';
+                deleteBtn.style.padding = '5px 10px';
+                deleteBtn.onclick = () => deleteTodo(todo.id);
+                
+                li.appendChild(text);
+                li.appendChild(deleteBtn);
+                list.appendChild(li);
+            });
+        }
+        
+        function clearCompleted() {
+            todos = todos.filter(todo => !todo.completed);
+            renderTodos();
+        }
+        
+        function clearAll() {
+            if (confirm('Are you sure? This will delete all tasks!')) {
+                todos = [];
+                renderTodos();
+            }
+        }
+    </script>
+</body>
+</html>
